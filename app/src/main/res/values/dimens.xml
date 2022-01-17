@@ -4,4 +4,5 @@
     <dimen name="product_img_width">148dp</dimen>
     <dimen name="common_padding_default">16dp</dimen>
     <dimen name="product_preview_cart_height">80dp</dimen>
+    <dimen name="product_cart_img_size">48dp</dimen>
 </resources>

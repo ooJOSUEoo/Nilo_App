@@ -160,8 +160,4 @@ class MainActivity : AppCompatActivity() , OnProductListener {
     override fun onClick(product: Product) {
 
     }
-
-    override fun onLongClick(product: Product) {
-
-    }
 }
