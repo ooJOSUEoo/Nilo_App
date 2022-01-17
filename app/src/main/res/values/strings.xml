@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Nilo</string>
+    <string name="product_msg_loading">Preparando todo…</string>
+    <string name="product_empty_cart">Carrito vacío</string>
+    <string name="product_view_cart">Ver carrito</string>
 </resources>
