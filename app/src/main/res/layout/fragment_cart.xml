@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/common_padding_default"
+            android:paddingVertical="10dp"
+            android:layout_gravity="center_vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="100"
+                android:text="@string/cart_title"
+                android:textColor="?attr/colorOnPrimary"
+                android:textAppearance="?attr/textAppearanceHeadline6"/>
+            
+            <ImageButton
+                android:id="@+id/ibCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close"
+                android:background="?attr/selectableItemBackground"
+                app:tint="@color/white"/>
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+</LinearLayout>
