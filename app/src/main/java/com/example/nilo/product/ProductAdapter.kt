@@ -79,11 +79,6 @@ class ProductAdapter(private val productList: MutableList<Product>,
             binding.root.setOnClickListener {
                 listener.onClick(product)
             }
-
-            binding.root.setOnLongClickListener { //cuando hay un click largo
-                listener.onLongClick(product)
-                true
-            }
         }
     }
 

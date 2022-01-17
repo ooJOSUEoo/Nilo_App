@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.nilo.cart.CartFragment
 import com.example.nilo.databinding.ActivityMainBinding
 import com.example.nilo.entities.Product
 import com.example.nilo.product.OnProductListener
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity() , OnProductListener {
 
         configAuth()
         configRecyclerView()
+        configButtons()
     }
 
     private fun configAuth(){
@@ -108,6 +110,13 @@ class MainActivity : AppCompatActivity() , OnProductListener {
             adapter = this@MainActivity.adapter
         }
 
+    }
+
+    private fun configButtons(){ //al hacer click ejecuta la clase de CartFragment
+        binding.btnViewCart.setOnClickListener {
+            val fragment = CartFragment()
+            fragment.show(supportFragmentManager.beginTransaction(),CartFragment::class.java.simpleName)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
