@@ -22,9 +22,11 @@ class ProductCartAdapter(private val productList: MutableList<Product>, //lista 
 
         fun setListener(product: Product){ //eventos al los botones de mas o menos
             binding.ibSum.setOnClickListener { //evento a boton mas
+                product.newQuantity += 1 //suma 1 al carrito
                 listener.setQuantity(product)
             }
             binding.ibSub.setOnClickListener { //evento al boton menos
+                product.newQuantity -= 1
                 listener.setQuantity(product)
             }
         }

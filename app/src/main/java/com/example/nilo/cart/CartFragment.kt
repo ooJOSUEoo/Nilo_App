@@ -74,12 +74,13 @@ class CartFragment : BottomSheetDialogFragment(), OnCartListener {
     }
 
     override fun onDestroyView() {
+        (activity as? MainAux)?.updateTotal() //actualiza el valor del total en ma vista principal
         super.onDestroyView()
         binding = null
     }
 
     override fun setQuantity(product: Product) {
-
+        adapter.update(product)
     }
 
     override fun showTotal(total: Double) {
