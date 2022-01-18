@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -59,8 +60,9 @@ class DetailFragment : Fragment() {
         binding?.let {
             it.etNewQuantity.setText(product.newQuantity.toString()) //pone el numero de la nueva cantidad en el etNew...
 
-            it.tvTotalPrice.text = getString(R.string.detail_total_price, product.totalPrice(),
+            val newQuantityString = getString(R.string.detail_total_price, product.totalPrice(),
                 product.newQuantity,product.price) //pone el valor en el tvTotal...
+            it.tvTotalPrice.text = HtmlCompat.fromHtml(newQuantityString, HtmlCompat.FROM_HTML_MODE_LEGACY)
         }
     }
 

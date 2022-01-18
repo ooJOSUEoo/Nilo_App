@@ -64,6 +64,9 @@ class CartFragment : BottomSheetDialogFragment(), OnCartListener {
             it.ibCancel.setOnClickListener {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN //oculta
             }
+            it.efab.setOnClickListener {
+                requestOrder()
+            }
         }
     }
 
@@ -71,6 +74,11 @@ class CartFragment : BottomSheetDialogFragment(), OnCartListener {
         (activity as? MainAux)?.getProductsCart()?.forEach{
             adapter.add(it)
         }
+    }
+
+    private fun requestOrder(){
+        dismiss()
+        (activity as? MainAux)?.clearCart()
     }
 
     override fun onDestroyView() {

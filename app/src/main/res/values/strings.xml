@@ -1,13 +1,16 @@
 <resources>
     <string name="app_name">Nilo</string>
+
     <string name="product_msg_loading">Preparando todo…</string>
     <string name="product_empty_cart">Carrito vacío</string>
     <string name="product_full_cart">Total: $%1$.2f USD</string>
     <string name="product_view_cart">Ver carrito</string>
+
     <string name="cart_title">Carrito de compra</string>
     <string name="cart_pay">Pagar</string>
+
     <string name="detail_add_to_cart">Añadir al carrito</string>
     <string name="detail_quantity">Disponibles: %1$d</string> <!--Numero entero-->
-    <string name="detail_total_price">Total: $%1.2f USD(%2$d x $%3$.2f)</string> <!--Numero con 2 decimales.
+    <string name="detail_total_price">&lt;b>&lt;big>Total: $%1.2f USD&lt;/big>&lt;/b>&lt;br>(%2$d x $%3$.2f)</string> <!--Numero con 2 decimales.
     Total precio, nueva cantodad, total precio-->
 </resources>
