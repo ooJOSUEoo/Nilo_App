@@ -2,6 +2,7 @@
     <string name="app_name">Nilo</string>
     <string name="product_msg_loading">Preparando todo…</string>
     <string name="product_empty_cart">Carrito vacío</string>
+    <string name="product_full_cart">Total: $%1$.2f USD</string>
     <string name="product_view_cart">Ver carrito</string>
     <string name="cart_title">Carrito de compra</string>
     <string name="cart_pay">Pagar</string>

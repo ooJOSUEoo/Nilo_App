@@ -203,5 +203,20 @@ class MainActivity : AppCompatActivity() , OnProductListener, MainAux {
         }else {
             productCartList.add(product) //añade una cantidad nueva
         }
+
+        updateTotal()
+    }
+
+    override fun updateTotal() {
+        var total = 0.0
+        productCartList.forEach {product -> //la suma de todos los productos del carrito
+            total += product.totalPrice()
+        }
+
+        if (total == 0.0){ //si el total es 0 va a decir carrito vacio
+            binding.tvTotal.text = getString(R.string.product_empty_cart)
+        }else{
+            binding.tvTotal.text = getString(R.string.product_full_cart, total)
+        }
     }
 }
