@@ -11,9 +11,9 @@ import com.example.nilo.R
 import com.example.nilo.databinding.ItemProductCartBinding
 import com.example.nilo.entities.Product
 
-class ProductCartFragment(private val productList: MutableList<Product>, //lista de productos
-                          private val listener: OnCartListener) : //la interfas
-    RecyclerView.Adapter<ProductCartFragment.ViewHolder>() {
+class ProductCartAdapter(private val productList: MutableList<Product>, //lista de productos
+                         private val listener: OnCartListener) : //la interfas
+    RecyclerView.Adapter<ProductCartAdapter.ViewHolder>() {
 
     private lateinit var context: Context
 
