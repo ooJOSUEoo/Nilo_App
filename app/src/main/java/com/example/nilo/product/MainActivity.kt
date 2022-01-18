@@ -12,6 +12,7 @@ import com.example.nilo.Constants
 import com.example.nilo.R
 import com.example.nilo.cart.CartFragment
 import com.example.nilo.databinding.ActivityMainBinding
+import com.example.nilo.detail.DetailFragment
 import com.example.nilo.entities.Product
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() , OnProductListener, MainAux {
     private lateinit var adapter: ProductAdapter //la clase para crud
 
     private lateinit var firestoreListener: ListenerRegistration
+
+    private var productSelected: Product? = null
 
     private val resultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()){
@@ -167,7 +170,14 @@ class MainActivity : AppCompatActivity() , OnProductListener, MainAux {
     }
 
     override fun onClick(product: Product) {
+        productSelected = product
 
+        val fragment = DetailFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.containerMain,fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun getProductsCart(): MutableList<Product> { //obtener los productos de la main activity
@@ -180,4 +190,6 @@ class MainActivity : AppCompatActivity() , OnProductListener, MainAux {
             }
         return productCartList
     }
+
+    override fun getProductSelected(): Product? = productSelected
 }
