@@ -65,6 +65,7 @@ class ProductCartAdapter(private val productList: MutableList<Product>, //lista 
         if (!productList.contains(product)){//si el listado actual no contiene el producto, lo agrega
             productList.add(product) //add es añadir
             notifyItemInserted(productList.size - 1)//se añade al final
+            calcTotal()
         }else{ //si existe el producto lo actualiza
             update(product)
         }
@@ -75,6 +76,7 @@ class ProductCartAdapter(private val productList: MutableList<Product>, //lista 
         if (index != -1){//se actualiza
             productList.set(index,product) //set es actualizar
             notifyItemChanged(index)//se añade al final
+            calcTotal()
         }
     }
 
@@ -83,6 +85,15 @@ class ProductCartAdapter(private val productList: MutableList<Product>, //lista 
         if (index != -1){//se actualiza
             productList.removeAt(index)//removeAt es eliminar
             notifyItemRemoved(index)//se añade al final
+            calcTotal()
         }
+    }
+
+    private fun calcTotal(){
+        var result = 0.0
+        for (product in productList){
+            result += product.totalPrice()
+        }
+        listener.showTotal(result)
     }
 }

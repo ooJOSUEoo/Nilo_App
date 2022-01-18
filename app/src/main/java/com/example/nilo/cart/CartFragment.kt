@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.nilo.R
 import com.example.nilo.databinding.FragmentCartBinding
 import com.example.nilo.entities.Product
 import com.example.nilo.product.MainAux
@@ -18,6 +19,8 @@ class CartFragment : BottomSheetDialogFragment(), OnCartListener {
     private lateinit var bottomSheetBehavior :  BottomSheetBehavior<*>
 
     private lateinit var adapter: ProductCartAdapter
+
+    private var totalPrice = 0.0
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog { //hace que aparesca el layout por abajo de la pantalla
         binding = FragmentCartBinding.inflate(LayoutInflater.from(activity))
@@ -80,6 +83,9 @@ class CartFragment : BottomSheetDialogFragment(), OnCartListener {
     }
 
     override fun showTotal(total: Double) {
-
+        totalPrice = total
+        binding?.let {
+            it.tvTotal.text = getString(R.string.product_full_cart,total)
+        }
     }
 }
