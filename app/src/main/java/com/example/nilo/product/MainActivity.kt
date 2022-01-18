@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() , OnProductListener, MainAux {
     private lateinit var firestoreListener: ListenerRegistration
 
     private var productSelected: Product? = null
+    private val  productCartList = mutableListOf<Product>()
 
     private val resultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()){
@@ -182,20 +183,15 @@ class MainActivity : AppCompatActivity() , OnProductListener, MainAux {
         showButton(false) //ocultar boton de carrito
     }
 
-    override fun getProductsCart(): MutableList<Product> { //obtener los productos de la main activity
-        val  productCartList = mutableListOf<Product>()
-        (1..7).forEach {
-                val product = Product(it.toString(), "Producto $it","This product is $it",
-                    "", it, price = 2.0*it)
-
-                productCartList.add(product)
-            }
-        return productCartList
-    }
+    override fun getProductsCart(): MutableList<Product> = productCartList //obtener los productos de la main activity
 
     override fun getProductSelected(): Product? = productSelected
 
     override fun showButton(isVisible: Boolean) { // si es true el boton de ver carrioto se va a ver, de lo contrario no
         binding.btnViewCart.visibility = if (isVisible) View.VISIBLE else View.GONE
+    }
+
+    override fun addProductToCart(product: Product) {
+        productCartList.add(product)
     }
 }

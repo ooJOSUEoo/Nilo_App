@@ -7,4 +7,5 @@ interface MainAux {
 
     fun getProductSelected(): Product?
     fun showButton(isVisible: Boolean)
+    fun addProductToCart(product: Product)
 }
