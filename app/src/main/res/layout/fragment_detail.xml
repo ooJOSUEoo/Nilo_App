@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:focusable="true"
+    android:clickable="true">
     
     <ImageView
         android:id="@+id/imgProduct"
@@ -41,6 +43,70 @@
         app:layout_constraintEnd_toEndOf="@id/tvName"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <ImageButton
+        android:id="@+id/ibSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_remove_circle"
+        android:background="?attr/selectableItemBackground"
+        android:layout_marginBottom="@dimen/common_padding_medium"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintBottom_toTopOf="@id/efab"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilNewQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_padding_min"
+        app:layout_constraintStart_toEndOf="@id/ibSub"
+        app:layout_constraintTop_toTopOf="@id/ibSub"
+        app:layout_constraintBottom_toBottomOf="@id/ibSub"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNewQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="3"
+            android:textAlignment="center"
+            android:inputType="number"
+            android:imeOptions="actionDone"
+            tools:text="5"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/ibSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_circle"
+        android:background="?attr/selectableItemBackground"
+        android:layout_marginStart="@dimen/common_padding_min"
+        app:layout_constraintStart_toEndOf="@id/tilNewQuantity"
+        app:layout_constraintTop_toTopOf="@id/ibSub"
+        app:layout_constraintBottom_toBottomOf="@id/ibSub"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvQuantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_padding_default"
+        android:text="@string/detail_quantity"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintBottom_toTopOf="@id/ibSub"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvTotalPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/detail_total_price"
+        android:textAppearance="?attr/textAppearanceSubtitle2"
+        android:layout_marginStart="@dimen/common_padding_default"
+        app:layout_constraintStart_toEndOf="@id/ibSum"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintTop_toTopOf="@id/ibSub"
+        app:layout_constraintBottom_toBottomOf="@id/ibSub"/>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -48,7 +114,7 @@
         app:layout_constraintStart_toStartOf="@id/tvName"
         app:layout_constraintEnd_toEndOf="@id/tvName"
         app:layout_constraintTop_toBottomOf="@id/tvName"
-        app:layout_constraintBottom_toTopOf="@id/efab">
+        app:layout_constraintBottom_toTopOf="@id/tvQuantity">
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDescription"
             android:layout_width="match_parent"
