@@ -186,7 +186,7 @@ class MainActivity : AppCompatActivity() , OnProductListener, MainAux {
         val  productCartList = mutableListOf<Product>()
         (1..7).forEach {
                 val product = Product(it.toString(), "Producto $it","This product is $it",
-                    "", it, 2.0*it)
+                    "", it, price = 2.0*it)
 
                 productCartList.add(product)
             }

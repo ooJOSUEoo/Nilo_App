@@ -40,7 +40,9 @@ class DetailFragment : Fragment() {
             binding?.let {
                 it.tvName.text = product.name
                 it.tvDescription.text = product.description
-                it.tvQuantity.text = product.quantity.toString()
+                it.tvQuantity.text = getString(R.string.detail_quantity,product.quantity)
+                it.tvTotalPrice.text = getString(R.string.detail_total_price, product.totalPrice(),
+                    product.newQuantity,product.price)
 
                 Glide.with(this)
                     .load(product.imgUrl)

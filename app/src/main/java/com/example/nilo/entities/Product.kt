@@ -9,7 +9,10 @@ data class Product( //clase para el modelo de datos de los producto
     var description: String? = null, //descripcion
     var imgUrl: String? = null, //url de img
     var quantity: Int = 0, // cantidad
+    @get:Exclude var newQuantity: Int = 1,
     var price: Double = 0.0){ //precio
+
+    fun totalPrice():Double = newQuantity * price
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
