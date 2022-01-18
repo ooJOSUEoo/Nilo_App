@@ -171,7 +171,12 @@ class MainActivity : AppCompatActivity() , OnProductListener, MainAux {
     }
 
     override fun onClick(product: Product) {
-        productSelected = product
+        val index = productCartList.indexOf(product)
+        if (index != -1){
+            productSelected = productCartList[index]
+        }else {
+            productSelected = product
+        }
 
         val fragment = DetailFragment()
         supportFragmentManager
@@ -191,7 +196,12 @@ class MainActivity : AppCompatActivity() , OnProductListener, MainAux {
         binding.btnViewCart.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 
-    override fun addProductToCart(product: Product) {
-        productCartList.add(product)
+    override fun addProductToCart(product: Product) { //agragar el producto al carrito
+        val index = productCartList.indexOf(product)
+        if (index != -1){
+            productCartList.set(index, product) //actualiza la cantidad
+        }else {
+            productCartList.add(product) //añade una cantidad nueva
+        }
     }
 }
