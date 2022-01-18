@@ -1,4 +1,4 @@
-package com.example.nilo
+package com.example.nilo.product
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,11 +8,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.nilo.Constants
+import com.example.nilo.R
 import com.example.nilo.cart.CartFragment
 import com.example.nilo.databinding.ActivityMainBinding
 import com.example.nilo.entities.Product
-import com.example.nilo.product.OnProductListener
-import com.example.nilo.product.ProductAdapter
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
@@ -21,7 +21,7 @@ import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 
-class MainActivity : AppCompatActivity() , OnProductListener {
+class MainActivity : AppCompatActivity() , OnProductListener, MainAux {
 
     private lateinit var binding: ActivityMainBinding //llamar a binding
 
@@ -168,5 +168,16 @@ class MainActivity : AppCompatActivity() , OnProductListener {
 
     override fun onClick(product: Product) {
 
+    }
+
+    override fun getProductsCart(): MutableList<Product> { //obtener los productos de la main activity
+        val  productCartList = mutableListOf<Product>()
+        (1..7).forEach {
+                val product = Product(it.toString(), "Producto $it","This product is $it",
+                    "", it, 2.0*it)
+
+                productCartList.add(product)
+            }
+        return productCartList
     }
 }
