@@ -178,6 +178,8 @@ class MainActivity : AppCompatActivity() , OnProductListener, MainAux {
             .add(R.id.containerMain,fragment)
             .addToBackStack(null)
             .commit()
+
+        showButton(false) //ocultar boton de carrito
     }
 
     override fun getProductsCart(): MutableList<Product> { //obtener los productos de la main activity
@@ -192,4 +194,8 @@ class MainActivity : AppCompatActivity() , OnProductListener, MainAux {
     }
 
     override fun getProductSelected(): Product? = productSelected
+
+    override fun showButton(isVisible: Boolean) { // si es true el boton de ver carrioto se va a ver, de lo contrario no
+        binding.btnViewCart.visibility = if (isVisible) View.VISIBLE else View.GONE
+    }
 }

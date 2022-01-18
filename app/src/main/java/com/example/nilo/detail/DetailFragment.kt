@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.nilo.R
 import com.example.nilo.databinding.FragmentDetailBinding
 import com.example.nilo.entities.Product
 import com.example.nilo.product.MainAux
@@ -37,7 +40,22 @@ class DetailFragment : Fragment() {
             binding?.let {
                 it.tvName.text = product.name
                 it.tvDescription.text = product.description
+                it.tvQuantity.text = product.quantity.toString()
+
+                Glide.with(this)
+                    .load(product.imgUrl)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.drawable.ic_access_time)
+                    .error(R.drawable.ic_broken_image)
+                    .centerCrop()
+                    .into(it.imgProduct)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        (activity as? MainAux)?.showButton(true) //mostrar el boton de carrito
+        super.onDestroyView()
+        binding = null
     }
 }
