@@ -32,6 +32,7 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getProduct()
+        setupButtons()
     }
 
     private fun getProduct() { //obtener los datos del producto
@@ -41,8 +42,7 @@ class DetailFragment : Fragment() {
                 it.tvName.text = product.name
                 it.tvDescription.text = product.description
                 it.tvQuantity.text = getString(R.string.detail_quantity,product.quantity)
-                it.tvTotalPrice.text = getString(R.string.detail_total_price, product.totalPrice(),
-                    product.newQuantity,product.price)
+                setNewQuantity(product)
 
                 Glide.with(this)
                     .load(product.imgUrl)
@@ -51,6 +51,37 @@ class DetailFragment : Fragment() {
                     .error(R.drawable.ic_broken_image)
                     .centerCrop()
                     .into(it.imgProduct)
+            }
+        }
+    }
+
+    private fun setNewQuantity(product: Product) {
+        binding?.let {
+            it.etNewQuantity.setText(product.newQuantity.toString()) //pone el numero de la nueva cantidad en el etNew...
+
+            it.tvTotalPrice.text = getString(R.string.detail_total_price, product.totalPrice(),
+                product.newQuantity,product.price) //pone el valor en el tvTotal...
+        }
+    }
+
+    private fun setupButtons(){
+        product?.let { product ->
+            binding?.let { binding ->
+                binding.ibSub.setOnClickListener { //evento para el boton de resta
+                    if (product.newQuantity > 1){
+                        product.newQuantity -= 1 //si la cantidad es mayor a 1 qutara 1 a la nueva cantidad
+                        setNewQuantity(product)
+                    }
+                }
+                binding.ibSum.setOnClickListener { //evento para el boton de suma
+                    if (product.newQuantity < product.quantity){
+                        product.newQuantity += 1 //si la cantidad es menor al limite sumara 1
+                        setNewQuantity(product)
+                    }
+                }
+                binding.efab.setOnClickListener {
+                    product.newQuantity =  binding.etNewQuantity.text.toString().toInt()
+                }
             }
         }
     }
